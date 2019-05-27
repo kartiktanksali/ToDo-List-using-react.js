@@ -16,8 +16,9 @@ class App extends Component{
 }
 
 componentDidMount() {
-  axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10').then(res => this.setState({todos:res.data}))
+  axios.get('http://127.0.0.1:5000/todo').then(res => this.setState({todos:res.data}))
 }
+
 
   markCompleted = (id) => {
     this.setState({todos:this.state.todos.map(todo=>{
@@ -30,13 +31,13 @@ componentDidMount() {
   }
 
   delTodo = (id) => {
-    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res =>
-     this.setState({todos:[...this.state.todos.filter(todo=>todo.id!=id)]}))
+    axios.delete(`http://localhost:5000/todo/${id}`).then(res =>
+     this.setState({todos:[...this.state.todos.filter(todo=>todo.id!==id)]}))
   }
 
-  addToDo = (title) =>{
-    axios.post('https://jsonplaceholder.typicode.com/todos',{
-      title:title,
+  addToDo = (task) =>{
+    axios.post('http://localhost:5000/todo',{
+      task:task,
       completed:false
     }).then(res => this.setState({todos:[...this.state.todos,res.data]}))
     
