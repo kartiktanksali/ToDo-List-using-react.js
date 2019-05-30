@@ -19,7 +19,7 @@ componentDidMount() {
   axios.get('http://127.0.0.1:5000/todo').then(res => this.setState({todos:res.data}))
 }
 
-
+/*
   markCompleted = (id) => {
     this.setState({todos:this.state.todos.map(todo=>{
       if(todo.id===id){
@@ -28,6 +28,13 @@ componentDidMount() {
       return todo
 
     }) });
+  }
+*/
+  markCompleted = (id) =>{
+    axios.put(`http://localhost:5000/todo/${id}`,{
+      
+    }).then(res => this.setState({todos:[res.data]}))
+    
   }
 
   delTodo = (id) => {
@@ -39,6 +46,7 @@ componentDidMount() {
     axios.post('http://localhost:5000/todo',{
       task:task,
       completed:false
+
     }).then(res => this.setState({todos:[...this.state.todos,res.data]}))
     
   }
