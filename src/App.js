@@ -30,12 +30,13 @@ componentDidMount() {
     }) });
   }
 */
-  markCompleted = (id) =>{
+   markCompleted = (id) =>{
     axios.put(`http://localhost:5000/todo/${id}`,{
       
     }).then(res => this.setState({todos:[res.data]}))
     
   }
+
 
   delTodo = (id) => {
     axios.delete(`http://localhost:5000/todo/${id}`).then(res =>
@@ -44,8 +45,7 @@ componentDidMount() {
 
   addToDo = (task) =>{
     axios.post('http://localhost:5000/todo',{
-      task:task,
-      completed:false
+      task:task
 
     }).then(res => this.setState({todos:[...this.state.todos,res.data]}))
     

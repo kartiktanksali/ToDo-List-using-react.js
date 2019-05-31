@@ -9,6 +9,7 @@ class AddToDo extends Component{
 	}
 
 	onChange = (e) => this.setState({[e.target.name]:e.target.value});
+	
 
 	onSubmit = (e) => {
 		e.preventDefault();
@@ -21,7 +22,8 @@ class AddToDo extends Component{
 		return (
 
 			<form onSubmit={this.onSubmit} style={{ display:'flex' }}>
-				<input type="text" name="task" placeholder="Add ToDo" style={{flex:'10',padding:'5px'}} value={this.state.task} onChange={this.onChange}/>
+				<input type="text" name="task" placeholder="Task" style={{flex:'10',padding:'5px'}} value={this.state.task} onChange={this.onChange}/>
+				
 				<input type="submit" value="submit" className="btn" style={{flex:'1'}}/>
 			</form>
 
